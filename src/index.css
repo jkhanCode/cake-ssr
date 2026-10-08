@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-script: "Caveat", cursive;
+
+  --color-cream-50: #FCFAF6;
+  --color-cream-100: #FAF7F2;
+  --color-cream-200: #F3EBE1;
+  --color-cream-300: #E6DACD;
+
+  --color-rose-50: #FFF5F7;
+  --color-rose-100: #FFE3EC;
+  --color-rose-200: #FFC0D3;
+  --color-rose-500: #FF3B77;
+  --color-rose-600: #E62562;
+  --color-rose-700: #BD174D;
+
+  --color-cocoa-900: #261614;
+  --color-cocoa-800: #3D2624;
+  --color-cocoa-700: #553936;
+  --color-cocoa-600: #72524E;
+  --color-cocoa-500: #93726D;
+  --color-cocoa-300: #C2ABA7;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+/* Subtle glow and romantic aesthetics */
+.rose-shadow {
+  box-shadow: 0 14px 34px -8px rgba(255, 59, 119, 0.18);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(61, 38, 36, 0.07);
+}
+
+.card-shadow-hover {
+  box-shadow: 0 20px 40px -12px rgba(61, 38, 36, 0.12);
+}

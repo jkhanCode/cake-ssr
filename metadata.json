@@ -1,0 +1,8 @@
+{
+  "name": "Remix Cakelab — Artisan Cakes \u0026 Confectionery",
+  "description": "Artisan cakes, sweet pastries, and custom celebration confectioneries baked with passion and served with love.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
