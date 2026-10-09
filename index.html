@@ -3,26 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cakelab — Artisan Cakes & Confectionery</title>
-    <meta name="description" content="Artisan cakes, sweet pastries, and custom celebration cakes baked with passion and served with love. Playful, romantic, and premium." />
-    <meta property="og:title" content="Cakelab — Artisan Cakes & Confectionery" />
-    <meta property="og:description" content="Artisan cakes, sweet pastries, and custom celebration cakes baked with passion and served with love. Playful, romantic, and premium." />
+    <title>Remix Cakelab — Artisan Cakes & Confectionery</title>
+    <meta name="description" content="Artisan cakes, sweet pastries, and custom celebration confectioneries baked with passion and served with love." />
+    <meta property="og:title" content="Remix Cakelab — Artisan Cakes & Confectionery" />
+    <meta property="og:description" content="Artisan cakes, sweet pastries, and custom celebration confectioneries baked with passion and served with love." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Cakelab" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cakelab — Artisan Cakes & Confectionery" />
-    <meta name="twitter:description" content="Artisan cakes, sweet pastries, and custom celebration cakes baked with passion and served with love. Playful, romantic, and premium." />
+    <meta name="twitter:title" content="Remix Cakelab — Artisan Cakes & Confectionery" />
+    <meta name="twitter:description" content="Artisan cakes, sweet pastries, and custom celebration confectioneries baked with passion and served with love." />
     <meta name="robots" content="index, follow" />
+
+    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org Bakery Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Bakery",
       "name": "Cakelab",
       "description": "Artisan cakes, sweet pastries, and custom celebration cakes baked with passion and served with love.",
-      "image": "https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=1200&q=85",
+      "image": "./assets/rose-chiffon.jpg",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "142 Rosewood Lane",
@@ -41,10 +45,1328 @@
       "servesCuisine": "Artisan Pastry, French Patisserie, Custom Celebration Cakes"
     }
     </script>
+
+    <!-- Standalone Single Stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Vanilla Script (No ES modules, No build steps, works on file://) -->
+    <script src="./js/script.js" defer></script>
   </head>
-  <body class="bg-[#FAF7F2] text-[#3D2624] font-sans antialiased selection:bg-[#FFE3EC] selection:text-[#FF3B77]">
-    <div id="root"><!--ssr-outlet--></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body>
+    <!-- Top Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>
+
+    <!-- Top Announcement Micro-banner -->
+    <aside class="top-announcement">
+      <span>Atelier pickup ready in 15m · Complimentary courier delivery on orders over $75 with code</span>
+      <a href="#treats-section" onclick="window.Cakelab.openCart()">ROSEWOOD10</a>
+    </aside>
+
+    <!-- Sticky Glass Navigation Header -->
+    <header class="navbar-header">
+      <div class="container nav-container">
+        <!-- Brand Logo (Single-Line Display Wordmark) -->
+        <a href="#hero-section" class="nav-brand">
+          <span class="brand-title">Cakelab</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="#treats-section" class="nav-link">Creations</a>
+          <a href="#treats-section" class="nav-link" onclick="setTimeout(function(){ document.querySelector('[data-category=\'fresh-cakes\']')?.click(); }, 100);">Fresh Cakes</a>
+          <a href="#treats-section" class="nav-link" onclick="setTimeout(function(){ document.querySelector('[data-category=\'sweet-pastries\']')?.click(); }, 100);">Sweet Pastries</a>
+          <a href="#custom-cakes-section" class="nav-link">Bespoke Builder</a>
+          <a href="#about-section" class="nav-link">Our Story</a>
+          <a href="#atelier-section" class="nav-link">Atelier &amp; Salon</a>
+        </nav>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <button type="button" class="btn-tasting-flight" onclick="window.Cakelab.quickAdd('atelier-tasting-box')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+            </svg>
+            <span>Tasting Flight</span>
+          </button>
+
+          <!-- Cart Drawer Toggle Button -->
+          <button type="button" class="cart-toggle-btn" onclick="window.Cakelab.openCart()" aria-label="View Cart" id="cart-toggle-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+              <path d="M3 6h18"></path>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-badge" id="cart-badge">1</span>
+          </button>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Mobile Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="6" x2="20" y2="6"></line>
+              <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div class="mobile-nav-panel" id="mobile-nav-panel">
+        <ul class="mobile-nav-links">
+          <li><a href="#treats-section">All Creations</a></li>
+          <li><a href="#custom-cakes-section">Bespoke Cake Builder</a></li>
+          <li><a href="#about-section">The Cakelab Story</a></li>
+          <li><a href="#tasting-box-section">Seasonal Tasting Flight</a></li>
+          <li><a href="#atelier-section">Reserve Tasting Salon</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+
+      <!-- Hero Section -->
+      <section class="hero-section" id="hero-section">
+        <!-- Floating Botanical Ambient Canvas -->
+        <canvas id="ambient-petals-canvas" class="ambient-petals-canvas" aria-hidden="true"></canvas>
+
+        <div class="hero-glow-1" aria-hidden="true"></div>
+        <div class="hero-glow-2" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="hero-grid">
+            <!-- Left Column: Story & Headline -->
+            <div data-reveal data-reveal-delay="1">
+              <div class="hero-kicker-wrap">
+                <span class="hero-kicker-script">artisan confectionery atelier</span>
+                <span style="color: rgba(189, 23, 77, 0.4);" aria-hidden="true">✦</span>
+                <span class="hero-kicker-sub">Est. 2021</span>
+              </div>
+
+              <h1 class="hero-title">
+                Baked with passion,<br>
+                <em>served with love.
+                  <svg style="position: absolute; left: 0; bottom: -8px; width: 100%; height: 10px; color: rgba(255, 59, 119, 0.35);" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M2.5 6.5C45.5 2.5 145.5 1.5 197.5 7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                </em>
+              </h1>
+
+              <p class="hero-subtitle">
+                Handcrafted celebration cakes, delicate Parisian pastries, and bespoke multi-tier centerpieces made with French butter, Madagascar vanilla, and organic botanical infusions.
+              </p>
+
+              <div class="hero-cta-group">
+                <a href="#treats-section" class="btn-primary">
+                  <span>Explore Creations</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+
+                <a href="#custom-cakes-section" class="btn-secondary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-rose-500);">
+                    <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"></path>
+                    <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"></path>
+                    <path d="M2 21h20"></path>
+                    <path d="M7 8v3"></path>
+                    <path d="M12 8v3"></path>
+                    <path d="M17 8v3"></path>
+                    <path d="M7 4h.01"></path>
+                    <path d="M12 4h.01"></path>
+                    <path d="M17 4h.01"></path>
+                  </svg>
+                  <span>Bespoke Cake Builder</span>
+                </a>
+              </div>
+
+              <!-- Trust Micro-Highlights -->
+              <div class="hero-trust-bar">
+                <div class="trust-item">
+                  <h4>100% Micro-Batch</h4>
+                  <p>Baked fresh daily in morning ovens</p>
+                </div>
+                <div class="trust-item">
+                  <h4>AOP French Butter</h4>
+                  <p>Laminated layers &amp; silken mousseline</p>
+                </div>
+                <div class="trust-item">
+                  <h4>48h Bespoke Turn</h4>
+                  <p>Custom designs for dream occasions</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Visual Showcase Card -->
+            <div class="hero-card-wrap" data-reveal data-reveal-delay="2">
+              <div class="hero-showcase-card">
+                <div class="hero-img-box" onclick="window.Cakelab.openProductModal('rose-lychee-chiffon')">
+                  <img src="./assets/rose-chiffon.jpg" alt="Rose &amp; Lychee Petal Chiffon" loading="eager">
+                  <span class="card-badge">Atelier Signature</span>
+                </div>
+                <div class="hero-card-details">
+                  <div class="hero-card-meta">
+                    <span class="hero-card-cat">Fresh Cake</span>
+                    <span class="hero-card-rating">
+                      <svg width="13" height="13" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      <span>5.0 (42 reviews)</span>
+                    </span>
+                  </div>
+                  <h3 class="hero-card-name" onclick="window.Cakelab.openProductModal('rose-lychee-chiffon')" style="cursor: pointer;">
+                    Rose &amp; Lychee Petal Chiffon
+                  </h3>
+                  <p class="hero-card-desc">
+                    Cloud-soft vanilla chiffon infused with Damask rose essence, whole lychee compote, and white chocolate mascarpone cream.
+                  </p>
+                  <div class="hero-card-footer">
+                    <div>
+                      <span style="font-size: 10px; color: var(--color-cocoa-500); text-transform: uppercase;">From</span>
+                      <div class="hero-card-price">$68.00</div>
+                    </div>
+                    <button type="button" class="btn-primary" style="padding: 9px 18px; font-size: 12px;" onclick="window.Cakelab.quickAdd('rose-lychee-chiffon')">
+                      <span>Add to Order</span>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Signature Treats & Creations Section -->
+      <section class="treats-section" id="treats-section">
+        <div class="container">
+          <!-- Section Header -->
+          <div class="section-header" data-reveal>
+            <div class="section-kicker">
+              <span class="section-kicker-script">pure botanical indulgence</span>
+              <span style="color: var(--color-rose-200);" aria-hidden="true">✦</span>
+              <span class="section-kicker-sub">Seasonal Patisserie</span>
+            </div>
+            <h2 class="section-title">Signature Cakes &amp; Treats</h2>
+            <p class="section-desc">
+              Every creation is baked with slow-fermented French pastry methods, organic edible botanicals, and reduced sugar for clean, luminous flavor.
+            </p>
+          </div>
+
+          <!-- Filter Segmented Tabs -->
+          <div class="filter-tabs-wrapper" data-reveal data-reveal-delay="1">
+            <div class="filter-tabs" role="tablist">
+              <button type="button" class="filter-tab-btn active" data-category="all" role="tab">All Treats (11)</button>
+              <button type="button" class="filter-tab-btn" data-category="fresh-cakes" role="tab">Fresh Cakes (4)</button>
+              <button type="button" class="filter-tab-btn" data-category="sweet-pastries" role="tab">Sweet Pastries (4)</button>
+              <button type="button" class="filter-tab-btn" data-category="custom-cakes" role="tab">Bespoke Cakes (3)</button>
+            </div>
+          </div>
+
+          <!-- Quick Search & Flavor Tag Chips Bar -->
+          <div class="treats-search-bar-wrap" data-reveal data-reveal-delay="2">
+            <div class="treats-search-input-box">
+              <svg class="treats-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" class="treats-search-input" id="treats-search-input" placeholder="Search by flavor notes, ingredients, or pastry name (e.g. lychee, pistachio, tart)..." aria-label="Search treats">
+              <button type="button" class="treats-search-clear" id="treats-search-clear" aria-label="Clear search">✕</button>
+            </div>
+            <div class="flavor-chips-row" id="flavor-chips-row">
+              <button type="button" class="flavor-chip-btn active" data-flavor="all">All Flavors</button>
+              <button type="button" class="flavor-chip-btn" data-flavor="Rose">Rose &amp; Lychee</button>
+              <button type="button" class="flavor-chip-btn" data-flavor="Pistachio">Bronte Pistachio</button>
+              <button type="button" class="flavor-chip-btn" data-flavor="Cocoa">Valrhona Cocoa</button>
+              <button type="button" class="flavor-chip-btn" data-flavor="Lemon">Meyer Lemon</button>
+              <button type="button" class="flavor-chip-btn" data-flavor="Berry">Wild Berries</button>
+              <button type="button" class="flavor-chip-btn" data-flavor="Vanilla">Tahitian Vanilla</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Products Grid -->
+          <div class="products-grid" id="products-grid">
+            <!-- Rendered by js/script.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us & Parisian Heritage Section -->
+      <section class="about-section" id="about-section">
+        <div class="container">
+          <div class="about-grid">
+            <!-- Left Column: Visual Montage -->
+            <div class="about-montage" data-reveal>
+              <div class="about-col-1">
+                <div class="about-img-frame">
+                  <img src="./assets/about-craft.jpg" alt="Pastry chef frosting artisan cake" loading="lazy">
+                </div>
+                <div class="about-card-info">
+                  <span style="font-family: var(--font-script); font-size: 24px; color: var(--color-rose-500); font-weight: 700; display: block;">
+                    100% micro-batch
+                  </span>
+                  <p style="font-size: 11px; color: var(--color-cocoa-600); margin-top: 4px; line-height: 1.5;">
+                    We never mass-freeze our sponges. Every layer is baked fresh on the morning of your event.
+                  </p>
+                </div>
+              </div>
+
+              <div class="about-col-2">
+                <div class="about-card-info" style="background-color: var(--color-rose-50); border-color: var(--color-rose-100);">
+                  <div style="display: flex; align-items: center; gap: 6px; color: var(--color-rose-500); font-size: 11px; font-weight: 700; text-transform: uppercase;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m4.5 3a4.5 4.5 0 1 1-4.5 4.5M16.5 12H15m-3 4.5a4.5 4.5 0 1 1-4.5-4.5M12 16.5V15m-4.5-3A4.5 4.5 0 1 1 12 7.5M7.5 12H9"/></svg>
+                    <span>Edible Botanicals</span>
+                  </div>
+                  <p style="font-size: 11px; color: var(--color-cocoa-600); margin-top: 6px; line-height: 1.5;">
+                    Heirloom violas, elderflower, Damask roses, and lavender hand-picked from organic botanical micro-farms.
+                  </p>
+                </div>
+                <div class="about-img-frame">
+                  <img src="./assets/about-pastry.jpg" alt="Fresh baked buttery brioche and pastries" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Confectioner Seal Badge -->
+              <div class="chef-seal-badge">
+                <div class="seal-icon-circ">CL</div>
+                <div>
+                  <span style="font-size: 10px; color: var(--color-cocoa-500); text-transform: uppercase; letter-spacing: 0.08em; display: block;">Master Confectioners</span>
+                  <span style="font-family: var(--font-serif); font-size: 13px; font-weight: 700; color: var(--color-cocoa-900);">Aria &amp; Julian Moreau</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Narrative Story -->
+            <div data-reveal data-reveal-delay="2">
+              <div class="section-kicker">
+                <span class="section-kicker-script">our sweet laboratory</span>
+                <span style="color: var(--color-rose-200);" aria-hidden="true">✦</span>
+                <span class="section-kicker-sub">The Cakelab Philosophy</span>
+              </div>
+
+              <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">
+                Where French pastry precision meets modern romantic daydream.
+              </h2>
+
+              <div style="font-size: 14px; color: var(--color-cocoa-700); line-height: 1.7; display: flex; flex-direction: column; gap: 14px;">
+                <p>
+                  Cakelab began with a rebellious idea: that celebration cakes should never taste like sugar-heavy fondant and dry crumbs. Having spent seven years training in historic Parisian patisseries, our founders wanted to create confectionery that tasted as sublime as it looked.
+                </p>
+                <p>
+                  Inside our sunny kitchen atelier, we treat baking like both an exact laboratory science and an expressive romantic art. We whip light Swiss meringue buttercream that carries only half the sweetness of traditional icing, allowing fragrant Damask rosewater, roasted Sicilian pistachios, and fresh tart berries to shine through.
+                </p>
+                <p>
+                  Whether you are celebrating a 30th birthday dinner with intimate friends, tying the knot under an arch of roses, or treating yourself on a quiet Sunday morning, every Cakelab creation is crafted to linger in your memory forever.
+                </p>
+              </div>
+
+              <!-- 3 Pillars of Craft -->
+              <div class="about-pillars">
+                <div class="pillar-item">
+                  <h5>72h Fermentation</h5>
+                  <p>Slow cold lamination for paper-thin, caramelized butter flakes.</p>
+                </div>
+                <div class="pillar-item">
+                  <h5>Organic Botanicals</h5>
+                  <p>Infused floral waters and pressed garden violas with zero artificial dyes.</p>
+                </div>
+                <div class="pillar-item">
+                  <h5>Sculptural Piping</h5>
+                  <p>Historic Victorian Lambeth scrollwork reimagined with modern restraint.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="#custom-cakes-section" class="btn-primary">
+                  <span>Design a Bespoke Cake</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+                <a href="#atelier-section" class="btn-secondary">
+                  <span>Schedule Salon Consultation</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bespoke Custom Cake Configurator -->
+      <section class="custom-builder-section" id="custom-cakes-section">
+        <div class="container">
+          <!-- Section Header -->
+          <div class="section-header">
+            <div class="section-kicker">
+              <span class="section-kicker-script">crafted for your milestone</span>
+              <span style="color: var(--color-rose-200);" aria-hidden="true">✦</span>
+              <span class="section-kicker-sub">Bespoke Atelier Service</span>
+            </div>
+            <h2 class="section-title">Design Your Custom Cake</h2>
+            <p class="section-desc">
+              Whether you are hosting an intimate rehearsal dinner, milestone 30th celebration, or grand botanical wedding, customize your dream cake below to receive an instant estimate and reserve your atelier slot.
+            </p>
+          </div>
+
+          <div class="builder-grid">
+            <!-- Form Column -->
+            <div class="builder-form-card">
+              <!-- Live Form -->
+              <form id="builder-form" onsubmit="window.Cakelab.submitBespokeConsultation(event)">
+                <!-- Step 1: Occasion & Date -->
+                <div style="margin-bottom: 22px;">
+                  <span class="builder-step-label">1. The Celebration &amp; Date</span>
+                  <div class="occasion-btn-grid">
+                    <button type="button" class="occasion-btn active" data-occasion="Wedding" onclick="window.Cakelab.handleOccasionSelect('Wedding')">Wedding</button>
+                    <button type="button" class="occasion-btn" data-occasion="Milestone Birthday" onclick="window.Cakelab.handleOccasionSelect('Milestone Birthday')">Milestone Birthday</button>
+                    <button type="button" class="occasion-btn" data-occasion="Anniversary" onclick="window.Cakelab.handleOccasionSelect('Anniversary')">Anniversary</button>
+                    <button type="button" class="occasion-btn" data-occasion="Gala / Brand" onclick="window.Cakelab.handleOccasionSelect('Gala / Brand')">Gala / Brand</button>
+                  </div>
+
+                  <div class="builder-row-2">
+                    <div>
+                      <label style="font-size: 11px; color: var(--color-cocoa-600); display: block; margin-bottom: 4px;">Celebration Date</label>
+                      <input type="date" class="form-control" id="builder-date" value="2026-10-18">
+                    </div>
+                    <div>
+                      <label style="font-size: 11px; color: var(--color-cocoa-600); display: block; margin-bottom: 4px;">
+                        Expected Guests: <span id="builder-guests-val" style="font-weight: 700; color: var(--color-cocoa-900);">32</span>
+                      </label>
+                      <input type="range" id="builder-guests" min="10" max="120" step="5" value="32">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 2: Architecture & Tiers -->
+                <div style="padding-top: 18px; border-top: 1px solid var(--color-cream-200); margin-bottom: 22px;">
+                  <span class="builder-step-label">2. Tier Architecture &amp; Scale</span>
+                  <div class="tier-cards-grid">
+                    <button type="button" class="tier-card-btn" data-tier="1-tier" onclick="window.Cakelab.handleTierSelect('1-tier')">
+                      <span class="tier-card-name">1-Tier Petite</span>
+                      <span class="tier-card-guests">14–18 guests</span>
+                      <span class="tier-card-base">Base $125</span>
+                    </button>
+                    <button type="button" class="tier-card-btn active" data-tier="2-tier" onclick="window.Cakelab.handleTierSelect('2-tier')">
+                      <span class="tier-card-name">2-Tier Classic</span>
+                      <span class="tier-card-guests">28–36 guests</span>
+                      <span class="tier-card-base">Base $195</span>
+                    </button>
+                    <button type="button" class="tier-card-btn" data-tier="3-tier" onclick="window.Cakelab.handleTierSelect('3-tier')">
+                      <span class="tier-card-name">3-Tier Grand</span>
+                      <span class="tier-card-guests">70–90 guests</span>
+                      <span class="tier-card-base">Base $380</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Sponge & Filling -->
+                <div style="padding-top: 18px; border-top: 1px solid var(--color-cream-200); margin-bottom: 22px;">
+                  <span class="builder-step-label">3. Signature Sponge &amp; Filling</span>
+                  <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div>
+                      <label style="font-size: 11px; color: var(--color-cocoa-600); display: block; margin-bottom: 4px;">Artisan Sponge Cake:</label>
+                      <select class="form-control" id="builder-sponge">
+                        <option value="Damask Rose &amp; Vanilla Chiffon" selected>Damask Rose &amp; Vanilla Chiffon</option>
+                        <option value="Sicilian Pistachio Frangipane">Sicilian Pistachio Frangipane</option>
+                        <option value="Valrhona 70% Dark Chocolate Ganache">Valrhona 70% Dark Chocolate Ganache</option>
+                        <option value="Lavender Earl Grey Bergamot">Lavender Earl Grey Bergamot</option>
+                        <option value="Salted Brown Butter &amp; Wild Honey">Salted Brown Butter &amp; Wild Honey</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label style="font-size: 11px; color: var(--color-cocoa-600); display: block; margin-bottom: 4px;">House Filling &amp; Mousse:</label>
+                      <select class="form-control" id="builder-filling">
+                        <option value="Lychee Compote &amp; Whipped Mascarpone" selected>Lychee Compote &amp; Whipped Mascarpone</option>
+                        <option value="Alpine Wild Strawberry Reduction">Alpine Wild Strawberry Reduction</option>
+                        <option value="Roasted Hazelnut Praliné &amp; Fleur de Sel">Roasted Hazelnut Praliné &amp; Fleur de Sel</option>
+                        <option value="Meyer Lemon Curd &amp; Elderflower Ricotta">Meyer Lemon Curd &amp; Elderflower Ricotta</option>
+                        <option value="Tahitian Vanilla Bean Pastry Mousse">Tahitian Vanilla Bean Pastry Mousse</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 4: Finish & Botanical Styling -->
+                <div style="padding-top: 18px; border-top: 1px solid var(--color-cream-200); margin-bottom: 22px;">
+                  <span class="builder-step-label">4. Finish Aesthetic &amp; Styling</span>
+                  <div class="finish-grid">
+                    <button type="button" class="finish-btn active" data-finish="vintage-lambeth" onclick="window.Cakelab.handleFinishSelect('vintage-lambeth')">
+                      <span class="finish-btn-title">Vintage Lambeth Piped Ruffles</span>
+                      <span class="finish-btn-price">+$20 artisan finish</span>
+                    </button>
+                    <button type="button" class="finish-btn" data-finish="pressed-botanical" onclick="window.Cakelab.handleFinishSelect('pressed-botanical')">
+                      <span class="finish-btn-title">Pressed Edible Meadow Florals</span>
+                      <span class="finish-btn-price">+$25 artisan finish</span>
+                    </button>
+                    <button type="button" class="finish-btn" data-finish="textured-ganache" onclick="window.Cakelab.handleFinishSelect('textured-ganache')">
+                      <span class="finish-btn-title">Architectural Linen Ganache</span>
+                      <span class="finish-btn-price">+$15 artisan finish</span>
+                    </button>
+                    <button type="button" class="finish-btn" data-finish="gold-leaf" onclick="window.Cakelab.handleFinishSelect('gold-leaf')">
+                      <span class="finish-btn-title">24k Gold Leaf Minimalist Shimmer</span>
+                      <span class="finish-btn-price">+$30 artisan finish</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 5: Contact & Inscription -->
+                <div style="padding-top: 18px; border-top: 1px solid var(--color-cream-200); margin-bottom: 24px;">
+                  <span class="builder-step-label">5. Contact &amp; Consultation Details</span>
+                  <div class="builder-row-2" style="margin-bottom: 12px;">
+                    <input type="text" class="form-control" id="builder-name" placeholder="Your Full Name *" required>
+                    <input type="email" class="form-control" id="builder-email" placeholder="Email Address *" required>
+                  </div>
+                  <textarea class="form-control" id="builder-notes" rows="2" placeholder="Special requests, floral color palette, venue delivery address, or bespoke inscription..."></textarea>
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                  <button type="submit" class="btn-primary" style="flex: 1; justify-content: center;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+                    <span>Request Cake Consultation</span>
+                  </button>
+                  <button type="button" class="btn-secondary" onclick="window.Cakelab.addBespokeCakeToCart()" style="padding: 12px 20px;">
+                    <span>Add to Bag</span>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Success State Confirmation View -->
+              <div id="builder-success-box" style="display: none; text-align: center; padding: 20px 10px;">
+                <div style="width: 56px; height: 56px; border-radius: 50%; background-color: var(--color-rose-50); color: var(--color-rose-500); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; border: 1px solid var(--color-rose-200);">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span style="font-family: var(--font-script); font-size: 28px; color: var(--color-rose-500); font-weight: 700; display: block;">
+                  Merci, <span id="builder-success-name">Friend</span>!
+                </span>
+                <h3 style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--color-cocoa-900); margin: 6px 0 10px;">
+                  Your Custom Cake Inquiry is Received
+                </h3>
+                <p style="font-size: 13px; color: var(--color-cocoa-700); line-height: 1.6; max-width: 480px; margin: 0 auto 20px;">
+                  Chef Aria will review your specifications and email you a personalized design sketch, complimentary tasting appointment, and availability confirmation within 24 hours.
+                </p>
+                <div style="background-color: var(--color-cream-100); border-radius: var(--radius-lg); padding: 16px; text-align: left; font-size: 12px; margin-bottom: 24px; border: 1px solid var(--color-cream-border);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                    <span style="color: var(--color-cocoa-600);">Specifications:</span>
+                    <span id="builder-success-details" style="font-weight: 600; color: var(--color-cocoa-900);"></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: var(--color-cocoa-600);">Estimated Total:</span>
+                    <span id="builder-success-est" style="font-weight: 700; color: var(--color-rose-500); font-size: 14px;"></span>
+                  </div>
+                </div>
+                <button type="button" class="btn-primary" onclick="window.Cakelab.resetBespokeForm()">
+                  <span>Configure Another Cake</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Live Specification Summary Column -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div class="spec-summary-card">
+                <div class="spec-card-head">
+                  <div>
+                    <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-rose-500);">Live Specification</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--color-cocoa-900);" id="spec-occasion">
+                      Wedding Celebration
+                    </h3>
+                  </div>
+                  <div class="spec-card-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"></path>
+                      <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"></path>
+                      <path d="M2 21h20"></path>
+                      <path d="M7 8v3"></path>
+                      <path d="M12 8v3"></path>
+                      <path d="M17 8v3"></path>
+                      <path d="M7 4h.01"></path>
+                      <path d="M12 4h.01"></path>
+                      <path d="M17 4h.01"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Interactive SVG Cake Visualizer Model -->
+                <div class="cake-visualizer-stage" id="cake-stage" aria-hidden="true">
+                  <svg id="cake-svg" viewBox="0 0 320 200" class="cake-svg-element">
+                    <defs>
+                      <linearGradient id="frosting-rose" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#FFE8EF"/>
+                        <stop offset="50%" stop-color="#FFF0F5"/>
+                        <stop offset="100%" stop-color="#FFD4E2"/>
+                      </linearGradient>
+                      <linearGradient id="pedestal-metal" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#E6DACD"/>
+                        <stop offset="50%" stop-color="#FFFFFF"/>
+                        <stop offset="100%" stop-color="#D9C9B8"/>
+                      </linearGradient>
+                      <filter id="soft-cake-shadow" x="-10%" y="-10%" width="120%" height="130%">
+                        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#3D2624" flood-opacity="0.12"/>
+                      </filter>
+                    </defs>
+
+                    <!-- Pedestal Base & Stand -->
+                    <g class="cake-pedestal">
+                      <ellipse cx="160" cy="192" rx="90" ry="7" fill="#3D2624" opacity="0.08"/>
+                      <path d="M125 190 Q160 186 195 190 L188 184 L132 184 Z" fill="url(#pedestal-metal)"/>
+                      <rect x="154" y="166" width="12" height="19" rx="2" fill="url(#pedestal-metal)"/>
+                      <ellipse cx="160" cy="166" rx="96" ry="10" fill="#FFFFFF" stroke="#E6DACD" stroke-width="1.5" filter="url(#soft-cake-shadow)"/>
+                      <ellipse cx="160" cy="165" rx="88" ry="7" fill="none" stroke="#FFC0D3" stroke-width="1" stroke-dasharray="3,3"/>
+                    </g>
+
+                    <!-- Bottom Tier (Tier 1) -->
+                    <g id="svg-tier-bottom" class="cake-tier cake-tier-bot">
+                      <rect id="svg-bot-body" x="85" y="112" width="150" height="48" rx="8" fill="url(#frosting-rose)" stroke="#FFC0D3" stroke-width="1.2" filter="url(#soft-cake-shadow)"/>
+                      <ellipse id="svg-bot-top" cx="160" cy="112" rx="75" ry="9" fill="#FFFBFD" stroke="#FFC0D3" stroke-width="1"/>
+                      <g id="svg-bot-finish"></g>
+                    </g>
+
+                    <!-- Middle Tier (Tier 2) -->
+                    <g id="svg-tier-middle" class="cake-tier cake-tier-mid">
+                      <rect id="svg-mid-body" x="105" y="68" width="110" height="44" rx="7" fill="url(#frosting-rose)" stroke="#FFC0D3" stroke-width="1.2" filter="url(#soft-cake-shadow)"/>
+                      <ellipse id="svg-mid-top" cx="160" cy="68" rx="55" ry="7" fill="#FFFBFD" stroke="#FFC0D3" stroke-width="1"/>
+                      <g id="svg-mid-finish"></g>
+                    </g>
+
+                    <!-- Top Tier (Tier 3) -->
+                    <g id="svg-tier-top" class="cake-tier cake-tier-top" style="opacity: 0; transform: scaleY(0);">
+                      <rect id="svg-top-body" x="122" y="30" width="76" height="38" rx="6" fill="url(#frosting-rose)" stroke="#FFC0D3" stroke-width="1.2" filter="url(#soft-cake-shadow)"/>
+                      <ellipse id="svg-top-top" cx="160" cy="30" rx="38" ry="5.5" fill="#FFFBFD" stroke="#FFC0D3" stroke-width="1"/>
+                      <g id="svg-top-finish"></g>
+                    </g>
+
+                    <!-- Damask Rose Blossom Crown Topper -->
+                    <g id="svg-cake-topper" class="cake-tier" style="transform: translateY(68px);">
+                      <circle cx="160" cy="0" r="10" fill="#FF3B77" opacity="0.9"/>
+                      <circle cx="157" cy="-2" r="6" fill="#FF85A8"/>
+                      <circle cx="162" cy="1" r="5" fill="#FFE3EC"/>
+                      <path d="M152 -2 Q144 -6 150 -10 Q156 -6 152 -2" fill="#88A07A" opacity="0.85"/>
+                      <path d="M168 -2 Q176 -6 170 -10 Q164 -6 168 -2" fill="#88A07A" opacity="0.85"/>
+                      <circle cx="160" cy="-2" r="2.5" fill="#FFD700"/>
+                    </g>
+
+                    <!-- Floating Ambient Sparkles -->
+                    <g class="cake-sparkle" style="transform: translate(60px, 60px);">
+                      <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#FFC0D3"/>
+                    </g>
+                    <g class="cake-sparkle" style="transform: translate(255px, 85px);">
+                      <path d="M0 -7 L1.8 -1.8 L7 0 L1.8 1.8 L0 7 L-1.8 1.8 L-7 0 L-1.8 -1.8 Z" fill="#F59E0B"/>
+                    </g>
+                    <g class="cake-sparkle" style="transform: translate(240px, 35px);">
+                      <path d="M0 -5 L1.2 -1.2 L5 0 L1.2 1.2 L0 5 L-1.2 1.2 L-5 0 L-1.2 -1.2 Z" fill="#FF3B77"/>
+                    </g>
+                  </svg>
+
+                  <div class="cake-stage-badge">
+                    <span id="cake-stage-tier-label">2-Tier Classic</span>
+                    <span class="stage-dot">✦</span>
+                    <span id="cake-stage-finish-label">Vintage Lambeth Ruffles</span>
+                  </div>
+
+                  <!-- Motion & Interactive Stage Controls -->
+                  <div class="cake-stage-controls">
+                    <div class="topper-buttons-row">
+                      <span class="topper-label">Topper:</span>
+                      <button type="button" class="topper-pill-btn active" data-topper="rose-crown" onclick="window.Cakelab.setTopper('rose-crown')">Rose Blossom</button>
+                      <button type="button" class="topper-pill-btn" data-topper="sparkler-candle" onclick="window.Cakelab.setTopper('sparkler-candle')">Sparkler ✦</button>
+                      <button type="button" class="topper-pill-btn" data-topper="gold-meadow" onclick="window.Cakelab.setTopper('gold-meadow')">Meadow Florals</button>
+                    </div>
+                    <button type="button" class="btn-turntable-spin" id="btn-turntable-spin" onclick="window.Cakelab.toggleCakeSpin()" aria-label="Toggle Turntable Rotation">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                      <span id="turntable-btn-text">Turntable Spin</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="spec-rows">
+                  <div class="spec-row">
+                    <span class="spec-row-label">Architecture:</span>
+                    <span class="spec-row-val" id="spec-architecture">2-Tier Classic Celebration</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-row-label">Portions:</span>
+                    <span class="spec-row-val" id="spec-portions">28–36 guests (32 guests)</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-row-label">Sponge:</span>
+                    <span class="spec-row-val" id="spec-sponge">Damask Rose &amp; Vanilla Chiffon</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-row-label">Filling:</span>
+                    <span class="spec-row-val" id="spec-filling">Lychee Compote &amp; Whipped Mascarpone</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-row-label">Styling:</span>
+                    <span class="spec-row-val" style="color: var(--color-rose-500);" id="spec-styling">Vintage Lambeth Piped Ruffles</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-row-label">Event Date:</span>
+                    <span class="spec-row-val" id="spec-date">2026-10-18</span>
+                  </div>
+                </div>
+
+                <div class="spec-total-box">
+                  <div>
+                    <span style="font-size: 11px; color: var(--color-cocoa-600); display: block;">Estimated Investment</span>
+                    <span style="font-family: var(--font-script); font-size: 15px; color: var(--color-rose-500); font-weight: 600;">tasting flight included</span>
+                  </div>
+                  <div style="text-align: right;">
+                    <span class="spec-total-price" id="spec-price">$215.00</span>
+                    <span style="font-size: 10px; color: var(--color-cocoa-500); display: block;">Includes consultation &amp; florals</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tasting Callout -->
+              <div class="callout-box">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-rose-500);"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  <span style="font-family: var(--font-serif); font-size: 13px; font-weight: 700; color: var(--color-cocoa-900);">
+                    Complimentary Tasting Flight
+                  </span>
+                </div>
+                <p style="font-size: 12px; color: var(--color-cocoa-600); line-height: 1.5;">
+                  All custom cake orders over $150 include our complimentary 4-slice tasting flight delivered directly to your doorstep so you can taste your flavor pairing before the big day.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasting Flight Spotlight Banner -->
+      <section class="tasting-banner-section" id="tasting-box-section">
+        <div class="container">
+          <div class="tasting-flight-card">
+            <div>
+              <img src="./assets/tasting-box.jpg" alt="The Cakelab Signature Weekend Tasting Flight" class="tasting-flight-img" loading="lazy">
+            </div>
+            <div class="tasting-flight-content">
+              <div class="section-kicker" style="margin-bottom: 4px;">
+                <span class="section-kicker-script">sample before you celebrate</span>
+                <span style="color: var(--color-rose-200);" aria-hidden="true">✦</span>
+                <span class="section-kicker-sub">Curated Box</span>
+              </div>
+              <h2 style="font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--color-cocoa-900); margin-bottom: 10px;">
+                The Cakelab Signature Weekend Tasting Flight
+              </h2>
+              <p style="font-size: 13px; color: var(--color-cocoa-700); line-height: 1.6;">
+                Designed especially for couples planning their wedding, milestone event hosts, or dessert lovers who want to taste four signature creations in our repertoire. Delivered in a rose-foiled gift box.
+              </p>
+
+              <ul class="tasting-items-list">
+                <li class="tasting-item-li">
+                  <svg class="tasting-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Rose &amp; Lychee Petal Chiffon</span>
+                </li>
+                <li class="tasting-item-li">
+                  <svg class="tasting-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Wild Strawberry &amp; Pistachio Charlotte</span>
+                </li>
+                <li class="tasting-item-li">
+                  <svg class="tasting-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Valrhona Cocoa &amp; Praliné Decadence</span>
+                </li>
+                <li class="tasting-item-li">
+                  <svg class="tasting-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Lemon Verbena &amp; Elderflower Cloud</span>
+                </li>
+              </ul>
+
+              <div style="display: flex; align-items: baseline; gap: 16px; margin-top: 4px;">
+                <div>
+                  <span style="font-size: 11px; color: var(--color-cocoa-500); text-transform: uppercase;">Flight Box Price</span>
+                  <div style="font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--color-cocoa-900);">$42.00</div>
+                </div>
+                <button type="button" class="btn-primary" onclick="window.Cakelab.quickAdd('atelier-tasting-box')">
+                  <span>Add Tasting Flight to Cart</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">
+              <span class="section-kicker-script">love letters from sweet moments</span>
+              <span style="color: var(--color-rose-200);" aria-hidden="true">✦</span>
+              <span class="section-kicker-sub">Celebration Reviews</span>
+            </div>
+            <h2 class="section-title">Cherished Occasions</h2>
+            <p class="section-desc">
+              Stories from couples, milestone hosts, and event designers who trusted Cakelab for their memorable dates.
+            </p>
+
+            <!-- Interactive Reviews Category Tabs -->
+            <div class="reviews-tabs-wrapper">
+              <div class="reviews-filter-tabs">
+                <button type="button" class="review-tab-btn active" data-rev-cat="all" onclick="window.Cakelab.filterReviews('all')">All Occasions</button>
+                <button type="button" class="review-tab-btn" data-rev-cat="wedding" onclick="window.Cakelab.filterReviews('wedding')">Weddings</button>
+                <button type="button" class="review-tab-btn" data-rev-cat="birthday" onclick="window.Cakelab.filterReviews('birthday')">Milestones</button>
+                <button type="button" class="review-tab-btn" data-rev-cat="gala" onclick="window.Cakelab.filterReviews('gala')">Brand Galas</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-grid" id="reviews-grid">
+            <!-- Review 1: Wedding -->
+            <div class="review-card" data-rev-cat="wedding">
+              <div>
+                <div class="review-stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="review-quote">
+                  "The Rose Petal Lambeth Romance was the undeniable centerpiece of our wedding. Not only did our guests take endless photos, but every single slice vanished in minutes. The lychee rose pairing was ethereal."
+                </p>
+              </div>
+              <div class="review-author">
+                <h5>Camille &amp; Julien Laurent</h5>
+                <p>Wedding in Provence Garden · August 2026</p>
+              </div>
+            </div>
+
+            <!-- Review 2: Gala -->
+            <div class="review-card" data-rev-cat="gala">
+              <div>
+                <div class="review-stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="review-quote">
+                  "We order Cakelab for all our VIP product launches and galas. Their attention to botanical aesthetics, punctuality, and flavor sophistication is unmatched in the city. The tasting flight sealed the deal immediately."
+                </p>
+              </div>
+              <div class="review-author">
+                <h5>Elena Rostova</h5>
+                <p>Event Director, Bloom &amp; Co. · September 2026</p>
+              </div>
+            </div>
+
+            <!-- Review 3: Birthday -->
+            <div class="review-card" data-rev-cat="birthday">
+              <div>
+                <div class="review-stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="review-quote">
+                  "Ordering through Cakelab was as seamless as it was delightful. The cream and rose aesthetic of their packaging, the handwritten greeting note, and the pistachio strawberry sponge was heaven in every bite."
+                </p>
+              </div>
+              <div class="review-author">
+                <h5>Sophie Chen</h5>
+                <p>30th Birthday Celebration · July 2026</p>
+              </div>
+            </div>
+
+            <!-- Review 4: Gala / Rehearsal -->
+            <div class="review-card" data-rev-cat="gala">
+              <div>
+                <div class="review-stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="review-quote">
+                  "The 3-tier botanical pressed meadow cake was an architectural marvel. The Earl Grey lavender aroma paired with blackberry curd was talked about all evening by our international guests."
+                </p>
+              </div>
+              <div class="review-author">
+                <h5>Marcus &amp; David Sterling</h5>
+                <p>Private Rehearsal Dinner · September 2026</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Atelier & Tasting Salon Reservation Section -->
+      <section class="atelier-section" id="atelier-section">
+        <div class="container">
+          <div class="atelier-grid">
+            <!-- Left Info Column -->
+            <div>
+              <div class="section-kicker">
+                <span class="section-kicker-script">welcome to our sanctuary</span>
+                <span style="color: var(--color-rose-200);" aria-hidden="true">✦</span>
+                <span class="section-kicker-sub">The Rosewood Atelier</span>
+              </div>
+              <h2 class="section-title" style="text-align: left; margin-bottom: 16px;">
+                Visit the Cakelab Atelier &amp; Tasting Room
+              </h2>
+              <p style="font-size: 14px; color: var(--color-cocoa-700); line-height: 1.7;">
+                Step into our sunlit patisserie kitchen scented with roasted vanilla beans and browned Normandy butter. Enjoy warm morning pastries fresh from our stone deck ovens, or reserve an intimate seated cake tasting session with our pastry team.
+              </p>
+
+              <div class="info-cards-row">
+                <div class="info-card-box">
+                  <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--color-rose-50); color: var(--color-rose-500); display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  </div>
+                  <h4 style="font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--color-cocoa-900);">Atelier Address</h4>
+                  <p style="font-size: 12px; color: var(--color-cocoa-600); margin-top: 4px; line-height: 1.45;">
+                    142 Rosewood Lane, Confectionery Quarter<br>
+                    Complimentary visitor parking at rear
+                  </p>
+                </div>
+
+                <div class="info-card-box">
+                  <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--color-rose-50); color: var(--color-rose-500); display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  </div>
+                  <h4 style="font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--color-cocoa-900);">Operating Hours</h4>
+                  <p style="font-size: 12px; color: var(--color-cocoa-600); margin-top: 4px; line-height: 1.45;">
+                    Tue – Sun: 8:00 AM – 6:00 PM<br>
+                    Monday: Closed for recipe laboratory
+                  </p>
+                </div>
+              </div>
+
+              <!-- Contact Bar -->
+              <div style="background-color: var(--color-cream-100); border-radius: var(--radius-xl); padding: 18px 22px; border: 1px solid var(--color-cream-border); display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                <div>
+                  <span style="font-weight: 700; color: var(--color-cocoa-900); display: block;">Concierge &amp; Event Inquiries:</span>
+                  <span style="color: var(--color-cocoa-600);">hello@cakelab-atelier.com · (555) 849-2253</span>
+                </div>
+                <span style="font-family: var(--font-script); font-size: 18px; font-weight: 700; color: var(--color-rose-500);">pickups ready in 15m</span>
+              </div>
+            </div>
+
+            <!-- Right Booking Card Column -->
+            <div class="salon-booking-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid var(--color-cream-200);">
+                <div>
+                  <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-rose-500);">By Appointment</span>
+                  <h3 style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--color-cocoa-900);">Reserve a Private Tasting Salon</h3>
+                </div>
+                <div style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--color-rose-50); color: var(--color-rose-500); display: flex; align-items: center; justify-content: center;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v2"></path><path d="M14 2v2"></path><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"></path><path d="M6 2v2"></path></svg>
+                </div>
+              </div>
+
+              <!-- Reservation Form -->
+              <form id="salon-booking-form" onsubmit="window.Cakelab.submitSalonBooking(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                <p style="font-size: 12px; color: var(--color-cocoa-600); line-height: 1.5;">
+                  Enjoy a dedicated 45-minute seated consultation with our master cake artist, including 4 artisan cake samples and organic French tea pairings.
+                </p>
+
+                <div class="builder-row-2">
+                  <div>
+                    <label style="font-size: 11px; font-weight: 600; color: var(--color-cocoa-800); display: block; margin-bottom: 4px;">Select Date</label>
+                    <input type="date" class="form-control" id="salon-date" value="2026-10-22">
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 600; color: var(--color-cocoa-800); display: block; margin-bottom: 4px;">Tasting Time</label>
+                    <select class="form-control" id="salon-time">
+                      <option value="10:00 AM">10:00 AM (Morning Salon)</option>
+                      <option value="11:30 AM" selected>11:30 AM (Mid-day Salon)</option>
+                      <option value="2:00 PM">2:00 PM (Afternoon Tea)</option>
+                      <option value="4:00 PM">4:00 PM (Golden Hour Salon)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Dynamic Live Salon Availability Feedback -->
+                <div class="salon-avail-notice" id="salon-avail-notice">
+                  <span class="avail-dot">✦</span>
+                  <span id="salon-avail-text">3 intimate tasting salon appointments available for this date</span>
+                </div>
+
+                <div class="builder-row-2">
+                  <div>
+                    <label style="font-size: 11px; font-weight: 600; color: var(--color-cocoa-800); display: block; margin-bottom: 4px;">Party Size</label>
+                    <select class="form-control" id="salon-party-size">
+                      <option value="2 Guests" selected>2 Guests (Couple)</option>
+                      <option value="3 Guests">3 Guests</option>
+                      <option value="4 Guests">4 Guests (Max Salon Capacity)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 600; color: var(--color-cocoa-800); display: block; margin-bottom: 4px;">Your Full Name</label>
+                    <input type="text" class="form-control" id="salon-name" placeholder="e.g. Eleanor Vance" required>
+                  </div>
+                </div>
+
+                <div style="padding-top: 6px;">
+                  <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background-color: var(--color-cocoa-800);">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span>Confirm Tasting Salon Reservation</span>
+                  </button>
+                  <span style="font-size: 11px; color: var(--color-cocoa-500); text-align: center; display: block; margin-top: 8px;">
+                    $35 tasting fee credited towards your custom cake order.
+                  </span>
+                </div>
+              </form>
+
+              <!-- Salon Booking Success View -->
+              <div id="salon-booking-success" style="display: none; text-align: center; padding: 20px 10px;">
+                <div style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--color-rose-50); color: var(--color-rose-500); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span style="font-family: var(--font-script); font-size: 26px; color: var(--color-rose-500); font-weight: 700; display: block;">
+                  Reserved for <span id="salon-success-name">Friend</span>
+                </span>
+                <h4 style="font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--color-cocoa-900); margin: 4px 0 10px;">
+                  Tasting Salon Confirmed
+                </h4>
+                <p style="font-size: 12px; color: var(--color-cocoa-700); line-height: 1.5; margin-bottom: 16px;">
+                  We look forward to welcoming you on <strong id="salon-success-details"></strong>. Four freshly-baked signature flight portions and organic French tea pairings have been reserved for you.
+                </p>
+                <button type="button" class="btn-secondary" onclick="window.Cakelab.resetSalonBooking()" style="font-size: 11px; padding: 8px 18px;">
+                  Book Another Slot
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Boutique Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Col 1: Brand story -->
+          <div class="footer-col">
+            <span style="font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: #FFFFFF; display: block;">Cakelab</span>
+            <span style="font-family: var(--font-script); font-size: 20px; color: var(--color-rose-200); display: block; margin-top: 2px;">baked with passion, served with love</span>
+            <p style="font-size: 12px; color: var(--color-cocoa-300); line-height: 1.6; max-width: 340px; margin-top: 14px;">
+              An artisan confectionery atelier blending classic French patisserie technique with organic botanicals, edible petals, and modern celebratory design.
+            </p>
+            <div style="font-size: 11px; color: var(--color-cocoa-500); margin-top: 14px;">
+              <p>142 Rosewood Lane, Confectionery Quarter</p>
+              <p style="margin-top: 4px;">Tue – Sun: 8:00 AM – 6:00 PM</p>
+            </div>
+          </div>
+
+          <!-- Col 2: Creations -->
+          <div class="footer-col">
+            <h4>Creations</h4>
+            <ul class="footer-links">
+              <li><a href="#treats-section" onclick="setTimeout(function(){ document.querySelector('[data-category=\'fresh-cakes\']')?.click(); }, 100);">Fresh Cakes</a></li>
+              <li><a href="#treats-section" onclick="setTimeout(function(){ document.querySelector('[data-category=\'sweet-pastries\']')?.click(); }, 100);">Sweet Pastries</a></li>
+              <li><a href="#custom-cakes-section">Custom Cakes</a></li>
+              <li><a href="#tasting-box-section">Tasting Flights</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Atelier -->
+          <div class="footer-col">
+            <h4>Atelier</h4>
+            <ul class="footer-links">
+              <li><a href="#about-section">Our Philosophy</a></li>
+              <li><a href="#atelier-section">Tasting Salon</a></li>
+              <li><a href="#custom-cakes-section">Event Catering</a></li>
+              <li><a href="#treats-section">Allergen Directory</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Secret Tasting Club -->
+          <div class="footer-col">
+            <h4>The Secret Tasting Club</h4>
+            <p style="font-size: 12px; color: var(--color-cocoa-300); line-height: 1.6;">
+              Receive secret weekend micro-batch drop notifications, seasonal tasting invitations, and 10% off your first cake order.
+            </p>
+            <form class="footer-newsletter-form" onsubmit="window.Cakelab.submitNewsletter(event)">
+              <input type="email" class="footer-newsletter-input" id="newsletter-email" placeholder="Enter your email address" required>
+              <button type="submit" class="btn-primary" style="padding: 9px 18px; font-size: 12px;">
+                <span>Join</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <p>© 2026 Cakelab Confectionery Atelier. All rights reserved.</p>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span>Crafted with</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-rose-500);"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span>and organic butter for sweet dreamers</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==========================================================================
+         OVERLAYS: PRODUCT MODAL & SLIDE-OUT CART DRAWER
+         ========================================================================== -->
+
+    <!-- Shared Backdrop -->
+    <div class="overlay-backdrop" id="overlay-backdrop"></div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-wrapper" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-dialog">
+        <!-- Close button -->
+        <button type="button" class="modal-close-btn" onclick="window.Cakelab.closeProductModal()" aria-label="Close product details">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+
+        <!-- Left Image Column -->
+        <div class="modal-img-col">
+          <img id="modal-img" src="./assets/rose-chiffon.jpg" alt="Product detail image">
+          <span class="card-badge" id="modal-badge" style="position: absolute; top: 14px; left: 14px;">Atelier Signature</span>
+        </div>
+
+        <!-- Right Content & Order Column -->
+        <div class="modal-content-col">
+          <!-- Meta -->
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; margin-bottom: 6px;">
+            <span id="modal-category" style="font-weight: 700; color: var(--color-rose-500); text-transform: uppercase;">Fresh Cake</span>
+            <span id="modal-servings" style="color: var(--color-cocoa-500);"></span>
+          </div>
+
+          <h2 id="modal-title" style="font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--color-cocoa-900); margin-bottom: 6px; line-height: 1.25;">
+            Rose &amp; Lychee Petal Chiffon
+          </h2>
+
+          <div style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--color-cocoa-900); margin-bottom: 12px;" id="modal-price">
+            $68.00
+          </div>
+
+          <p id="modal-desc" style="font-size: 12px; color: var(--color-cocoa-700); line-height: 1.6; margin-bottom: 16px;">
+            Description
+          </p>
+
+          <!-- Tasting Notes -->
+          <div style="background-color: var(--color-cream-100); border-radius: var(--radius-md); padding: 10px 14px; border: 1px solid var(--color-cream-border); margin-bottom: 16px;">
+            <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-cocoa-600); display: block; margin-bottom: 6px;">
+              Tasting Notes &amp; Palate
+            </span>
+            <div id="modal-flavor-notes" style="display: flex; flex-wrap: wrap; gap: 4px;"></div>
+          </div>
+
+          <!-- Interactive Sensory Spectrum Palate Radar -->
+          <div class="sensory-spectrum-box">
+            <div class="sensory-spectrum-header">
+              <span class="sensory-spectrum-title">Atelier Sensory Spectrum</span>
+              <span class="sensory-spectrum-sub">Micro-batch balance</span>
+            </div>
+            <div class="sensory-spectrum-bars" id="modal-sensory-bars">
+              <!-- Rendered dynamically with smooth CSS transitions by script.js -->
+            </div>
+          </div>
+
+          <!-- Size Selector (if available) -->
+          <div id="modal-sizes-wrap" style="margin-bottom: 16px;">
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-cocoa-900); display: block; margin-bottom: 6px;">
+              Select Celebration Size
+            </span>
+            <div id="modal-sizes-list" class="size-selector-wrap"></div>
+          </div>
+
+          <!-- Inscription input -->
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-cocoa-900); display: block; margin-bottom: 4px;">
+              Gift Inscription (Optional)
+            </label>
+            <input type="text" class="form-control" id="modal-note-input" maxlength="60" placeholder="e.g. 'Happy 30th Birthday Juliette ♡'">
+          </div>
+
+          <!-- Ingredients -->
+          <div style="font-size: 11px; color: var(--color-cocoa-500); margin-bottom: 20px;">
+            <strong style="color: var(--color-cocoa-700);">Key Ingredients: </strong>
+            <span id="modal-ingredients">Organic French Butter, Eggs, Flour</span>
+          </div>
+
+          <!-- Bottom Action Row -->
+          <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 14px; border-top: 1px solid var(--color-cream-200);">
+            <div class="stepper-wrap">
+              <button type="button" class="stepper-btn" onclick="window.Cakelab.updateModalQty(-1)">-</button>
+              <span class="stepper-val" id="modal-qty-val">1</span>
+              <button type="button" class="stepper-btn" onclick="window.Cakelab.updateModalQty(1)">+</button>
+            </div>
+
+            <button type="button" class="btn-primary" style="flex-grow: 1; justify-content: center;" onclick="window.Cakelab.addModalItemToCart()">
+              <span>Add to Treat Bag</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide-out Cart Drawer Panel -->
+    <div class="cart-drawer-panel" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+      <!-- Head -->
+      <div class="cart-drawer-head">
+        <div class="cart-drawer-title-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-rose-500);"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <h2 style="font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--color-cocoa-900);" id="cart-drawer-title">
+            Your Treat Bag
+          </h2>
+          <span class="cart-count-pill" id="cart-head-count">1 item</span>
+        </div>
+        <button type="button" class="modal-close-btn" style="position: static;" onclick="window.Cakelab.closeCart()" aria-label="Close Treat Bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Items Scroll Container -->
+      <div class="cart-items-scroll" id="cart-items-container">
+        <!-- Rendered by js/script.js -->
+      </div>
+
+      <!-- Empty State View -->
+      <div class="cart-empty-view" id="cart-empty-state" style="display: none;">
+        <div class="cart-empty-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        </div>
+        <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--color-cocoa-900); margin-bottom: 6px;">
+          Your bag is empty
+        </h3>
+        <p style="font-size: 12px; color: var(--color-cocoa-600); margin-bottom: 20px;">
+          Explore our fresh artisan cakes, crisp twice-baked pastries, and tasting boxes.
+        </p>
+        <button type="button" class="btn-primary" onclick="window.Cakelab.closeCart()">
+          <span>Browse Creations</span>
+        </button>
+      </div>
+
+      <!-- Checkout Form View -->
+      <div id="cart-checkout-form" style="display: none; padding: 20px 24px; overflow-y: auto; flex-grow: 1;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--color-cream-200);">
+          <h3 style="font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--color-cocoa-900);">
+            Fulfillment Details
+          </h3>
+          <button type="button" style="font-size: 12px; color: var(--color-rose-500); font-weight: 600;" onclick="window.Cakelab.backToCartItems()">
+            ← Edit items
+          </button>
+        </div>
+
+        <form onsubmit="window.Cakelab.submitOrder(event)" style="display: flex; flex-direction: column; gap: 12px;">
+          <input type="text" class="form-control" id="checkout-name" placeholder="Full Name *" required>
+          <input type="email" class="form-control" id="checkout-email" placeholder="Email Address *" required>
+          <input type="tel" class="form-control" id="checkout-phone" placeholder="Phone Number (for delivery updates)">
+          <textarea class="form-control" id="checkout-address" rows="2" placeholder="Delivery Address or Pickup Notes..."></textarea>
+          
+          <div style="padding-top: 10px;">
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+              <span>Confirm &amp; Place Order</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Order Receipt View -->
+      <div id="cart-order-receipt" style="display: none; padding: 24px; text-align: center; overflow-y: auto; flex-grow: 1;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background-color: var(--color-rose-50); color: var(--color-rose-500); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 1px solid var(--color-rose-200);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span style="font-family: var(--font-script); font-size: 28px; color: var(--color-rose-500); font-weight: 700; display: block;">
+          Baked with love!
+        </span>
+        <h3 style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--color-cocoa-900); margin: 4px 0 8px;">
+          Order Confirmed
+        </h3>
+        <p style="font-size: 12px; color: var(--color-cocoa-700); line-height: 1.5; margin-bottom: 18px;">
+          Thank you, <strong id="receipt-name">Friend</strong>. Your order <strong id="receipt-order-no">#CKL-9842</strong> is scheduled with our bake team. A confirmation receipt was emailed to <strong id="receipt-email"></strong>.
+        </p>
+        <div style="background-color: var(--color-cream-100); border-radius: var(--radius-lg); padding: 14px; text-align: left; font-size: 12px; border: 1px solid var(--color-cream-border); display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--color-cocoa-600);">Fulfillment:</span>
+            <span id="receipt-method" style="font-weight: 600; color: var(--color-cocoa-900);">Atelier Pickup</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--color-cocoa-600);">Total Paid:</span>
+            <span id="receipt-total" style="font-weight: 700; color: var(--color-rose-500); font-size: 14px;">$68.00</span>
+          </div>
+        </div>
+        <button type="button" class="btn-primary" style="width: 100%; justify-content: center;" onclick="window.Cakelab.finishOrder()">
+          <span>Back to Confectionery Gallery</span>
+        </button>
+      </div>
+
+      <!-- Foot Summary & Actions -->
+      <div class="cart-drawer-foot" id="cart-drawer-foot">
+        <!-- Delivery Toggle -->
+        <div>
+          <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-cocoa-600); display: block; margin-bottom: 4px;">
+            Fulfillment Option
+          </span>
+          <div class="delivery-toggle-wrap">
+            <button type="button" class="delivery-tab-btn active" id="btn-delivery-pickup">Atelier Counter Pickup</button>
+            <button type="button" class="delivery-tab-btn" id="btn-delivery-courier">Chilled Courier Delivery</button>
+          </div>
+        </div>
+
+        <!-- Free courier progress bar -->
+        <div>
+          <span style="font-size: 10px; color: var(--color-rose-600); font-weight: 600; display: block;" id="free-shipping-msg">
+            Add $7.00 more for free courier delivery
+          </span>
+          <div class="free-shipping-bar">
+            <div class="free-shipping-fill" id="free-shipping-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+
+        <!-- Promo Code Input -->
+        <form class="promo-row" onsubmit="window.Cakelab.applyPromoCode(event)">
+          <input type="text" class="promo-input" id="cart-promo-input" placeholder="Promo code (ROSEWOOD10)">
+          <button type="submit" class="btn-apply-promo">Apply</button>
+        </form>
+        <span id="cart-promo-msg" style="font-size: 10px; display: block;"></span>
+
+        <!-- Price breakdown rows -->
+        <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 6px; border-top: 1px solid var(--color-cream-300);">
+          <div class="cart-calc-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal" style="font-weight: 600; color: var(--color-cocoa-900);">$68.00</span>
+          </div>
+          <div class="cart-calc-row" id="cart-discount-row" style="display: none; color: var(--color-rose-600);">
+            <span>Welcome Discount</span>
+            <span id="cart-discount-val">-$0.00</span>
+          </div>
+          <div class="cart-calc-row">
+            <span>Delivery Fee</span>
+            <span id="cart-delivery-fee" style="font-weight: 600; color: var(--color-cocoa-900);">Free (Atelier)</span>
+          </div>
+          <div class="cart-total-row">
+            <span>Estimated Total</span>
+            <span id="cart-grand-total" style="color: var(--color-rose-500);">$68.00</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 6px;" onclick="window.Cakelab.showCheckout()">
+          <span>Proceed to Checkout</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast Notification Popup -->
+    <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+      <div class="toast-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="toast-title" id="toast-title">Added to Treat Bag</div>
+        <div class="toast-msg" id="toast-msg">Item has been added to your order ♡</div>
+      </div>
+      <div class="toast-progress-bar" id="toast-progress-bar"></div>
+    </div>
+
   </body>
 </html>
-
